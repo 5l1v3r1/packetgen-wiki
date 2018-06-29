@@ -9,6 +9,7 @@ PacketGen provides built-in packet parsers for the following protocols:
 | [ETH](http://www.rubydoc.info/gems/packetgen/PacketGen/Header/Eth)   	    |     ✔     	|
 | [LLC](http://www.rubydoc.info/gems/packetgen/PacketGen/Header/LLC)   	    |     ✔     	|
 | [Dot1q](http://www.rubydoc.info/gems/packetgen/PacketGen/Header/Dot1q)    |     ✔     	|
+| [Dot1x](http://www.rubydoc.info/gems/packetgen/PacketGen/Header/Dot1x)    |     ✔     	|
 | [ARP](http://www.rubydoc.info/gems/packetgen/PacketGen/Header/ARP)   	    |     ✔     	|
 | [IP](http://www.rubydoc.info/gems/packetgen/PacketGen/Header/IP)    	    |     ✔     	|
 | [IPv6](http://www.rubydoc.info/gems/packetgen/PacketGen/Header/IPv6)      |     ✔     	|
