@@ -2,17 +2,17 @@ This page describes the use of PacketGen with TCP/IP stack.
 
 ## Mastering IP stack protocols
 
-The IP stack (or TCP/IP stack) is a network stack based on IP protocol, which is a
+The IP stack (or TCP/IP stack) is a network stack based on IP protocol, which is at
 network level (level 3 in [OSI model](https://en.wikipedia.org/wiki/OSI_model)).
 
 IP is itself often used with a higher protocol (transport level, or level 4):
 
-* Transmission Control Protocol (TCP), which provides reliable, ordered, and error-checked
-  delivery of a stream of octets between applications running on hosts communicating by an
-  IP network,
+* Transmission Control Protocol (TCP), which provides reliable, ordered, and
+    error-checked delivery of a stream of octets between applications running
+    on hosts communicating by an IP network,
 * User Datagram Protocol (UDP), which is simpler than TCP: this is a connection-less
-  protocol with a minimum of protocol mechanisms. It provides checksums for data integrity
-  but is not reliable, there is no guarantee of ordering delivery.
+    protocol with a minimum of protocol mechanisms. It provides checksums for data
+    integrity  but is not reliable, there is no guarantee of ordering delivery.
 
 ### IP header
 
@@ -39,7 +39,6 @@ A IP header consists of a set of fields:
 * 4-bit protocol version (`IP#version`). Attended value is 4 for IPv4,
 * 4-bit IP header length (`IP#ihl). Size of IP header in 32-bit words. As a IP header
   is 20 bytes long, this value should be 5. It may be greater if header has options,
-  but options are not supported by PacketGen,
 * 8-bit type of service (`IP#tos`),
 * 16-bit total length (`IP#length`), size of IP packet, including the header,
 * 16-bit ID (`IP#id`),
@@ -53,9 +52,10 @@ A IP header consists of a set of fields:
 * 8-bit time to live (`IP#ttl`),
 * 8-bit protocol (`IP#protocol`) to indicate upper protocol (6 for TCP, and 17 for UDP
   by example),
-* 16-bit checksum (`IP#checksum`) of all IP packet,
+* 16-bit checksum (`IP#checksum`) on the whole IP packet,
 * 32-bit source IP address (`IP#src`),
 * 32-bit destination IP address (`IP#dst`),
+* some options (`IP#options`),
 * a body (`IP#body`) containing data conveyed by IP.
 
 A IP header may be built this way:
@@ -109,7 +109,7 @@ pkt.length            # => 20
 As you can see, `checksum` and `length` are not automatically set to correct values. But
 they may be set easily with `IP#calc_sum`, which computes checksum, and `IP#calc_length`
 which set correct length (taking care of body length). `Packet#calc` may be used too:
-it automatically call `#calc_sum` and `#calc_length` on all headers responding to them:
+it automatically calls `#calc_sum` and `#calc_length` on all headers responding to them:
 
 ```
 pg> pkt.calc
@@ -167,7 +167,7 @@ A TCP header consists of:
 * 16-bit destination port (`TCP#dport`),
 * 32-bit sequence number (`TCP#seqnum`),
 * 32-bit acknowledge number (`TCP#acknum`),
-* a 16-bit field (`TCP#u16`) composed og:
+* a 16-bit field (`TCP#u16`) composed of:
   * 4-bit data offset (`TCP#data_offset`),
   * 3-bit reserved field (`TCP#reserved`),
   * 9 1-bit flags (`TCP#flags` or `TCP#flag_ns`, `TCP#flag_cwr`, `TCP#flag_ece`,
@@ -234,8 +234,8 @@ pkt.tcp.flag_rst = true
 pkt.tcp.sport = 44444
 ```
 
-`checksum` field may be computed by `Header::TCP#calc_sum`. All checksum and length fields
-from this packet may by computed at once using `pkt.calc`:
+`checksum` field may be computed by `Header::TCP#calc_sum`. All checksum and
+length fields from this packet may be computed at once using `pkt.calc`:
 
 ```
 pg> pkt.calc
@@ -376,8 +376,8 @@ pkt.udp.sport = 44444
 ```
 
 `checksum` and `length` fields may be computed by `Header::UDP#calc_sum` and
-`Header::UDP#calc_length` respectively. All checksum and length fields from this packet
-may by computed at once using `pkt.calc`:
+`Header::UDP#calc_length` respectively. All checksum and length fields from this
+packet may be computed at once using `pkt.calc`:
 
 ```
 pg> pkt.calc
@@ -569,7 +569,7 @@ pkt.length            # => 0
 
 As you can see, `length` is not automatically set to correct value. But it may be set
 easily with `IPv6#calc_length`.
-`Packet#calc` may be used too: it automatically call `#calc_sum` and `#calc_length` on
+`Packet#calc` may be used too: it automatically calls `#calc_sum` and `#calc_length` on
 all headers responding to them:
 
 ```
@@ -633,11 +633,11 @@ pg> pkt
 
 IPv6 comes with a new version of ICMP: ICMPv6 (yes!).
 
-ICMPv6 has the same header than ICMP, but type and code have different meanings. And
-ICMPv6 has not the same protocol number than ICMP.
+ICMPv6 has the same header than ICMP, but type and code have different meanings.
+And ICMPv6 has not the same protocol number than ICMP.
 
-In fact, ICMPv6 supports much more features than ICMP, but at packet level, there is no
-such differences.
+In fact, ICMPv6 supports much more features than ICMP, but at packet level,
+there is no such differences.
 
 Adding a ICMPv6 header to an IPv6 packet is easy:
 

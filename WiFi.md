@@ -95,7 +95,7 @@ FCS is the CRC of the Dot11 frame. By default, PacketGen, sets a FCS field in al
 frames, and try to parse it when parsing or capturing.
 
 But, some drivers remove FCS field when capturing, and/or do not support setting it.
-You may deactivate FCS in Dot11, for all packets:
+In this case, you may deactivate FCS in Dot11, for all packets:
 
 ```ruby
 PacketGen::Header::Dot11.has_fcs = false

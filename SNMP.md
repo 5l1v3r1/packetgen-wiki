@@ -21,8 +21,8 @@ little differences between them.
 ASN.1 provides basic objects, such as: integers, many kinds of strings, floats,
 booleans. It also provides some container objects (sequences and sets). They all
 are defined in Universal class. A protocol may defined others objects, which
-will be grouped in the Context class.For example, SNMP defines GetRequest-PDU
-object in this class. They also exist Private and Application classes.
+will be grouped in the Context class. For example, SNMP defines GetRequest-PDU
+object in this class. There is also Private and Application classes.
 
 Each basic object has a tag, used by the encoding rules. For example, Boolean
 has tag value 1, Integer has tag value 2.
@@ -50,29 +50,28 @@ rasn1 gem provides a `RASN1::Model` class to define complex ASN.1 objects. See
 
 In PacketGen, `SNMP` header inherits from `PacketGen::Header::ASN1Base`, which
 inherits from `RASN1::Model`.
-`Header::ASN1Base` provides [[Header minimal API|Create Custom Protocol#Header
-minimal API]].
+`Header::ASN1Base` provides [Header minimal API](https://github.com/sdaubert/packetgen/wiki/Create-Custom-Protocol#Header-minimal-API).
 
 Some ASN1. objets are also defined in `PacketGen::Header::SNMP` namespace:
 
 * [`PDUs`](http://www.rubydoc.info/gems/packetgen/PacketGen/Header/SNMP/PDUs),
-  which is a CHOICE between all SNMP PDUs,
+    which is a CHOICE between all SNMP PDUs,
 * [`GetRequest`](http://www.rubydoc.info/gems/packetgen/PacketGen/Header/SNMP/GetRequest),
-  which is the model of a SNMP Get request,
+    which is the model of a SNMP Get request,
 * [`GetNextRequest`](http://www.rubydoc.info/gems/packetgen/PacketGen/Header/SNMP/GetNextRequest),
 * [`GetResponse`](http://www.rubydoc.info/gems/packetgen/PacketGen/Header/SNMP/GetResponse),
 * [`SetRequest`](http://www.rubydoc.info/gems/packetgen/PacketGen/Header/SNMP/SetRequest),
 * [`Trapv1`](http://www.rubydoc.info/gems/packetgen/PacketGen/Header/SNMP/Trapv1),
-  which is Trap PDU for SNMPv1,
+    which is Trap PDU for SNMPv1,
 * [`Bulk`](http://www.rubydoc.info/gems/packetgen/PacketGen/Header/SNMP/Bulk),
 * [`InformRequest`](http://www.rubydoc.info/gems/packetgen/PacketGen/Header/SNMP/InformRequest),
 * [`Trapv2`](http://www.rubydoc.info/gems/packetgen/PacketGen/Header/SNMP/Trapv2),
-  which is Trap PDU for SNMPv2,
+    which is Trap PDU for SNMPv2,
 * [`Report`](http://www.rubydoc.info/gems/packetgen/PacketGen/Header/SNMP/Report),
 * [`VariableBindings`](http://www.rubydoc.info/gems/packetgen/PacketGen/Header/SNMP/VariableBindings),
-  which is a SEQUENCE OF (an array of) `VarBind`. This class is used in PDU classes,
+    which is a SEQUENCE OF (an array of) `VarBind`. This class is used in PDU classes,
 * [`VarBind`](http://www.rubydoc.info/gems/packetgen/PacketGen/Header/SNMP/VarBind),
-  which is an association between a name (as an OBJECT ID) and a value (its type
+    which is an association between a name (as an OBJECT ID) and a value (its type
     depends on its name).
 
 ### SNMP base class
@@ -99,7 +98,7 @@ Message ::= SEQUENCE {
                 data ANY        -- Here is PDU
             }
 ```
-All objects may be accessed to `#[]` accessor:
+All objects may be accessed through `#[]` accessor:
 
 ```ruby
 snmp = PacketGen::Header::SNMP.new
