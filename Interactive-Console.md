@@ -52,7 +52,7 @@ This local configuration may be used to forge packets:
 
 ```
 pg> pkt = gen('IP', src: config.ipaddr, dst: '8.8.8.8')
-pg> pkt.recalc
+pg> pkt.calc
 pg> pkt.to_w
 => 20
 ```
@@ -68,7 +68,8 @@ pg> arp '192.168.0.1'
 
 Utils methods are:
 * [`arp`](http://www.rubydoc.info/gems/packetgen/PacketGen/Utils#arp-class_method)
-  to get MAC address for given IP address,
+    to get MAC address for given IP address,
 * [`arp_spoof`](http://www.rubydoc.info/gems/packetgen/PacketGen/Utils#arp_spoof-class_method)
-  to do ARP spoofing.
-* [`mitm`](http://www.rubydoc.info/gems/packetgen/PacketGen/Utils#mitm-class_method) to do a Man-In-The-Middle attack (on local network only).
+    to do ARP spoofing.
+* [`mitm`](http://www.rubydoc.info/gems/packetgen/PacketGen/Utils#mitm-class_method)
+    to do a Man-In-The-Middle attack (on local network only).

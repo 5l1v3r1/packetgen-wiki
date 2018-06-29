@@ -218,7 +218,7 @@ pg>
 
 ### Generate binary data and read packets
 
-From a pcket, you may generate binary data which will be sent on network. You may
+From a packet, you may generate binary data which will be sent on network. You may
 also parse binary data to create packets:
 
 ```

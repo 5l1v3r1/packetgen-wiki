@@ -16,14 +16,15 @@ inner protocol.
 
 A packet consists of:
 
-* an array containing headers (`PacketGen::PAcket#headers`),
-* a body (`PacketGen::PAcket#body`, which is a shortcut to last header's body).
+* an array containing headers (`PacketGen::Packet#headers`),
+* a body (`PacketGen::Packet#body`, which is a shortcut to last header's body).
 
 Packet class also provides methods to interact with packets:
 * parsing packets from binary string,
 * reading packets from PCAP and PCAP-NG files,
-* capturing packets from a network interface,
 * writing packets to PCAP-NG files,
+* capturing packets from a network interface,
+* sending packets on wire,
 * helpers methods to:
     * calculate all length and checksum fields among headers,
     * serialize packet to binary data,
@@ -39,7 +40,7 @@ Some headers may contain others headers. Such headers should have a `#body` fiel
 to handle inner headers.
 
 Some protocols use length fields and/or checksum fields. To permit computation
-of these fields at once through `PacketGen::Packet#calc`, these fiels should be
+of these fields at once through `PacketGen::Packet#calc`, these fields should be
 named `#length` and `#checksum`, respectively.
 
 Most of PacketGen header classes inherit from [`PacketGen::Header::Base`](http://www.rubydoc.info/gems/packetgen/PacketGen/Header/Base)
@@ -69,8 +70,7 @@ types are listed in table below.
 | `Int64le`                  | 64-bit little-endian integer                   |
 | `String`                   | binary string                                  |
 | `CString`                  | null-terminated string                         |
-| `IntString`                | binary string prepended with its field         |
-| `Array`                    | container for types. May contain multiple values of a single type|
+| `IntString`                | binary string prepended with its length         |
 
 ### Composed Types
 
@@ -79,6 +79,7 @@ types are commonly used to define headers:
 
 | Type                     | Description                                      |
 |:------------------------:|:-------------------------------------------------|
+| `Array`                  | container for types. May contain multiple values of a single type|
 | `Fields`                 | a container to concatenate multiple fields of different types together |
 | `TLV`                    | Type-Length-Value type                           |
 | `OUI`                    | Organizationally Unique Identifier               |
