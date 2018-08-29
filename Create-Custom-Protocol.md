@@ -6,8 +6,8 @@ To add a new/custom header, you first have to define the new header class. For e
 ```ruby
 module MyModule
  class MyHeader < PacketGen::Header::Base
-   define_field :field1, PacketGen::Types::Int32   
-   define_field :field2, PacketGen::Types::Int32   
+   define_field :field1, PacketGen::Types::Int32
+   define_field :field2, PacketGen::Types::Int32
  end
 end
 ```
@@ -22,7 +22,7 @@ Finally, bindings must be declared:
 
 ```ruby
 # bind MyHeader as IP protocol number 254 (needed by Packet#parse and Packet#add)
-PacketGen::Header::IP.bind_header MyModule::MyHeader, protocol: 254
+PacketGen::Header::IP.bind MyModule::MyHeader, protocol: 254
 ```
 
 And use it:
@@ -165,6 +165,8 @@ If your header class has a checksum field and/or a length field, `Packet` provid
 Then `Packet#calc_checksum` and `Packet#calc_length` will calculate all checksum and length fields in all headers, including yours.
 
 If your header class is not an application layer one, you should define a `body` field of type `PacketGen::Types::String`. This will allow `Packet#parse` to automagically parse headers embedded in yours. Same magic will happen for `Packet#to_s`, `Packet#encapsulate`, `Packet#decapsulate` and `Packet#add`.
+
+If, to respond to a message, some fields may be inverted in your header, you should define `#reply!` to help `Packet#reply` and `Packet#reply!` do the thing.
 
 ## Header minimal API
 
