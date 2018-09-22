@@ -22,7 +22,7 @@ Finally, bindings must be declared:
 
 ```ruby
 # bind MyHeader as IP protocol number 254 (needed by Packet#parse and Packet#add)
-PacketGen::Header::IP.bind_header MyModule::MyHeader, protocol: 254
+PacketGen::Header::IP.bind MyModule::MyHeader, protocol: 254
 ```
 
 And use it:
