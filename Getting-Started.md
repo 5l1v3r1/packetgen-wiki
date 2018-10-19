@@ -1,6 +1,12 @@
 ## Install PacketGen
 
-Use rubygem:
+PacketGen depends on PcapRub, which needs pcap development files to install. On Debian, you have to do:
+
+```
+$ sudo apt install libpcap-dev
+```
+
+To install PacketGen, use rubygem:
 
 ```
 $ gem install packetgen
