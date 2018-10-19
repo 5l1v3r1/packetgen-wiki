@@ -82,8 +82,8 @@ is a simple ASN.1 object defined like this:
 ```ruby
 class SNMP < ASN1Base
   sequence :message,
-           content: [enumerated(:version, value: 'v2c',
-                                enum: { 'v1' => 0, 'v2c' => 1, 'v2' => 2, 'v3' => 3 }),
+           content: [integer(:version, value: 'v2c',
+                             enum: { 'v1' => 0, 'v2c' => 1, 'v2' => 2, 'v3' => 3 }),
                      octet_string(:community, value: 'public'),
                      model(:data, PDUs)]
 end
