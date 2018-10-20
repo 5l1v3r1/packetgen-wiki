@@ -5,10 +5,14 @@ To add a new/custom header, you first have to define the new header class. For e
 
 ```ruby
 module MyModule
- class MyHeader < PacketGen::Header::Base
-   define_field :field1, PacketGen::Types::Int32
-   define_field :field2, PacketGen::Types::Int32
- end
+  class MyHeader < PacketGen::Header::Base
+    define_field :field1, PacketGen::Types::Int32
+    define_field :field2, PacketGen::Types::Int32
+
+    # Mandatory to be detected as MyModule::MyHeader,
+    # else it will be detected as MyHeader.
+    def protocol_name; "MyModule::MyHeader"; end
+  end
 end
 ```
 
