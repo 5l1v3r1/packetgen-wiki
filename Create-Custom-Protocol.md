@@ -11,7 +11,7 @@ module MyModule
 
     # Mandatory to be detected as MyModule::MyHeader,
     # else it will be detected as MyHeader.
-    def protocol_name; "MyModule::MyHeader"; end
+    def self.protocol_name; "MyModule::MyHeader"; end
   end
 end
 ```
@@ -183,7 +183,7 @@ A header MUST have accessors:
 * `#packet` : get/set packet to which header belongs.
 
 A header MUST respond to:
-* `#protocol_name`: get protocol name, usually class name as a String, without
+* `.protocol_name`: get protocol name, usually class name as a String, without
    module path,
 * `#method_name`: get method name, usually same as protocol name but downcase.
   This name is used as accessor from packet to access header object,
