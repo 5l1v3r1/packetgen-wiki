@@ -27,7 +27,7 @@ PacketGen provides built-in packet parsers for the following protocols:
 | [DNS](http://www.rubydoc.info/gems/packetgen/PacketGen/Header/DNS)   	    |     ✔     	| |
 | [EAP](http://www.rubydoc.info/gems/packetgen/PacketGen/Header/EAP)   	    |     ✔      	| |
 | [ESP](http://www.rubydoc.info/gems/packetgen-plugin-ipsec/PacketGen/Plugin/ESP)   	    |     P     	| [packetgen-plugin-ipsec](https://github.com/sdaubert/packetgen-plugin-ipsec) |
-| [IKE](http://www.rubydoc.info/gems/packetgen/-plugin-ipsecPacketGen/Plugin/IKE)   	    |     P     	| [packetgen-plugin-ipsec](https://github.com/sdaubert/packetgen-plugin-ipsec) |
+| [IKE](http://www.rubydoc.info/gems/packetgen-plugin-ipsec/PacketGen/Plugin/IKE)   	    |     P     	| [packetgen-plugin-ipsec](https://github.com/sdaubert/packetgen-plugin-ipsec) |
 | [DHCP](http://www.rubydoc.info/gems/packetgen/PacketGen/Header/DHCP)      |     ✔     	| |
 | [DHCPv6](http://www.rubydoc.info/gems/packetgen/PacketGen/Header/DHCPv6)  |     ✔     	| |
 | [HTTP](http://www.rubydoc.info/gems/packetgen/PacketGen/Header/HTTP)      |     ✔     	| |
