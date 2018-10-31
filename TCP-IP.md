@@ -310,7 +310,7 @@ pg> pkt
            Options      options: MSS:1250,NOP
 ```
 
-As `TCP::Options` is a subclass of `Array`, all array methods may be used:
+As `TCP::Options` an `Array`-like object, it responds to `Enumerable` API:
 
 ```ruby
 pkt.tcp.options.each do |opt|
