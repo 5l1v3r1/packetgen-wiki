@@ -308,13 +308,10 @@ interface on which sends packet:
 pg> pkt.to_w('eth1')
 ```
 
-In general, packets are erroneous because some fields are not properly set. To
-easily fix that, use `PacketGen::Packet#calc`, which will calculte all calculatable
-fields (for now: length and checksum ones):
+All calculable fields (in general, lengths and checksums) will be set before sending packet on wire. To send erroneous packets, avoid automatic calucation!
 
 ```
-pg> pkt.calc
-pg> pkt.to_w
+pg> pkt.to_w('eth0', calc: false)
 ```
 
 Of course, this is to you to put correct values for addresses or ports, by example.
